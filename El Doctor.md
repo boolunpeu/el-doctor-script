@@ -56,21 +56,25 @@ IP address:
 `echo "  Private IP: $(/sbin/ip -o -4 addr list eth0 | awk "{print $4}" | cut -d/ -f1)"`
 
 DNS:
-`cat /etc/resolv.conf | grep nameserver | awk '{print $2}'
+`cat /etc/resolv.conf | grep nameserver | awk "{print $2}"`
 
 Network services: 
 `sudo ss -tlnp | tail -n+2 | tr -s " " | cut -d " " -f 1,4,7 | column -ts " "`
 
 Memory usage:
+
 `egrep --color 'Mem|Cache|Swap' /proc/meminfo`
 
 Disk usage:
-`df -h
+
+`df -h`
 
 Disk I/O
-`iostat -d
+
+`iostat -d`
 
 Uptime:
-`uptime
+
+`uptime`
 
 
