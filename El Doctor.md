@@ -35,7 +35,7 @@ and of course the metrics of my server :
 - `Memory`
 - `CPU`
 - `Disk Usage`
-- `Network
+- `Network`
 
 So for it i will research the command needed for each metrics and service. 
 
