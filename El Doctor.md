@@ -40,25 +40,33 @@ and of course the metrics of my server :
 So for it i will research the command needed for each metrics and service. 
 
 Time and date : 
+
 `echo "## Server Monitoring Report - $(date +'%F %k:%M:%S %Z')"`
 
 Device info:
+
 `hostnamectl`
 
 Service running:
+
 `sudo systemctl list-units --type=service | grep "running" | sed -e "s/loaded.*running.*/running/g" -e "s/.service//g"`
 
 Connectivity:
+
 `ping -c 1 google.com &> /dev/null && echo "status: connected" || echo "  Status: Disconnected"`
 
 IP address:
+
 `echo "  Public IP: $(curl -s ipecho.net/plain;echo)"`
+
 `echo "  Private IP: $(/sbin/ip -o -4 addr list eth0 | awk "{print $4}" | cut -d/ -f1)"`
 
 DNS:
+
 `cat /etc/resolv.conf | grep nameserver | awk "{print $2}"`
 
 Network services: 
+
 `sudo ss -tlnp | tail -n+2 | tr -s " " | cut -d " " -f 1,4,7 | column -ts " "`
 
 Memory usage:
